@@ -48,11 +48,9 @@ class UserController extends Controller
     public function edit($id)
     {
         $data = User::find($id);
-
         if (!$data) {
             return response()->json(['error' => 'User not found'], 404);
         }
-
         return response()->json($data, 200);
     }
 
@@ -100,11 +98,8 @@ class UserController extends Controller
             $user = User::findOrFail($id);
             $user->delete();
             DB::commit();
-            Session()->flash('success', 'User deleted successfully');
-
-            // Session::flash('success', 'Data Berhasil dihapus');
+            Session()->flash('success', 'User  Berhasil Dihapus');
             return redirect()->route('data-user.index');
-            // return redirect()->route('admin.user.index')->with('messageSuccess', 'User deleted successfully');
         } catch (\Exception $e) {
             DB::rollBack();
             return redirect()->back()->with('error', $e->getMessage());

@@ -1,3 +1,4 @@
+<!-- Modal Tambah User -->
 <div class="modal modal-blur fade" id="modalAdd" tabindex="-1" role="dialog" aria-hidden="true" data-bs-backdrop="static">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -6,49 +7,30 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            @if ($errors->any())
-                <div class="modal-body">
-                    <div class="col-lg-12">
-                        <div class="alert alert-important alert-danger alert-dismissible" role="alert">
-
-                            <div>
-                                <i class="ti ti-alert-circle"></i> Error -
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-
-                            <a class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="close"></a>
-                        </div>
-                    </div>
-                </div>
-            @endif
-
-
-
             <form action="{{ route('data-user.store') }}" method="POST">
                 <div class="modal-body">
                     @csrf
-                    {{-- 
-                    <div class="mb-3">
-                        <label class="form-label">Name</label>
-                        <input type="text" id="name" name="name" class="form-control"
-                            placeholder="Your  name">
-                    </div> --}}
-
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="mb-3">
                                 <label class="form-label">Username</label>
-                                <input type="text" id="name" name="name" class="form-control">
+                                <input type="text" id="name" name="name"
+                                    class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}"
+                                    required>
+                                @error('name')
+                                    <span class="invalid-feedback">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="mb-3">
                                 <label class="form-label">Email</label>
-                                <input type="email" id="email" name="email" class="form-control">
+                                <input type="email" id="email" name="email"
+                                    class="form-control @error('email') is-invalid @enderror"
+                                    value="{{ old('email') }}" required>
+                                @error('email')
+                                    <span class="invalid-feedback">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -67,7 +49,7 @@
     </div>
 </div>
 
-
+<!-- Modal Edit User -->
 @foreach ($dataUser as $data)
     <div class="modal modal-blur fade" id="modalEdit{{ $data->id }}" tabindex="-1" role="dialog"
         aria-hidden="true" data-bs-backdrop="static">
@@ -77,23 +59,6 @@
                     <h5 class="modal-title">Edit User</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-
-                @if ($errors->any() && session('editing_id') == $data->id)
-                    <div class="modal-body">
-                        <div class="alert alert-important alert-danger alert-dismissible" role="alert">
-                            <div>
-                                <i class="ti ti-alert-circle"></i> Error -
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert"
-                                aria-label="Close"></button>
-                        </div>
-                    </div>
-                @endif
 
                 <form action="{{ route('data-user.update', $data->id) }}" method="POST">
                     @csrf

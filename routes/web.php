@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\be\DashboardController;
 use App\Http\Controllers\be\UserController;
+use App\Http\Controllers\fe\LandingController;
+use App\Http\Controllers\be\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +17,15 @@ use App\Http\Controllers\be\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+
+Route::get('/', [LandingController::class, 'index'])->name('landing.index');
+Route::get('/contact', [LandingController::class, 'contactIndex'])->name('landing.contactIndex');
+Route::get('/about', [LandingController::class, 'aboutIndex'])->name('landing.aboutIndex');
+Route::get('/service', [LandingController::class, 'serviceIndex'])->name('landing.serviceIndex');
+Route::get('/testimonial', [LandingController::class, 'testimonialIndex'])->name('landing.testimonialIndex');
+Route::get('/blog', [LandingController::class, 'blogIndex'])->name('landing.blogIndex');
 
 Auth::routes();
 
