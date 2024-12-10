@@ -10,6 +10,8 @@
                     class="navbar-brand-image">
             </a>
         </h1>
+
+        <!--navbar mobile-->
         <div class="navbar-nav flex-row d-lg-none">
             <div class="nav-item d-none d-lg-flex me-3">
                 <div class="btn-list">
@@ -187,7 +189,8 @@
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown"
                     aria-label="Open user menu">
-                    <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
+                    <span class="avatar avatar-sm"
+                        style="background-image: url({{ asset('be/static/avatars/000m.jpg') }})"></span>
                     <div class="d-none d-xl-block ps-2">
                         <div>Paweł Kuna</div>
                         <div class="mt-1 small text-secondary">UI Designer</div>
@@ -203,20 +206,15 @@
                 </div>
             </div>
         </div>
+
+        <!--navbar Sidebar-->
         <div class="collapse navbar-collapse" id="sidebar-menu">
             <ul class="navbar-nav pt-lg-3">
                 <li class="nav-item">
-                    <a class="nav-link" href="./">
+                    <a class="nav-link" href="{{ route('dashboard.index') }}">
                         <span
                             class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
-                                <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
-                                <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
-                            </svg>
+                            <i class="ti ti-home"></i>
                         </span>
                         <span class="nav-link-title">
                             Home
@@ -226,13 +224,56 @@
                 <li class="nav-item">
                     <div class="nav-link">
                         <span class="nav-link-title">
-                            Master
+                            Landing Page
+                        </span>
+                    </div>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="{{ route('data-user.index') }}">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <i class="ti ti-buildings"></i>
+                        </span>
+                        <span class="nav-link-title">
+                            Profile
+                        </span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="{{ route('data-user.index') }}">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <i class="ti ti-news"></i>
+                        </span>
+                        <span class="nav-link-title">
+                            Blog
+                        </span>
+                    </a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="{{ route('data-user.index') }}">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <i class="ti ti-shopping-cart"></i>
+                        </span>
+                        <span class="nav-link-title">
+                            Produk
+                        </span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <div class="nav-link">
+                        <span class="nav-link-title">
+                            Manajemen Pengguna
                         </span>
                     </div>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{ route('data-user.index') }}">
+                    <a class="nav-link active" href="{{ route('be/user.index') }}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <i class="ti ti-users"></i>
                         </span>
