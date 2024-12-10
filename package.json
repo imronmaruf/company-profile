@@ -12,5 +12,11 @@
         "laravel-vite-plugin": "^1.0.0",
         "sass": "^1.56.1",
         "vite": "^5.0.0"
+    },
+    "dependencies": {
+        "@tabler/icons-webfont": "^3.24.0",
+        "datatables.net": "^2.1.8",
+        "datatables.net-bs5": "^2.1.8",
+        "sweetalert2": "^11.14.5"
     }
 }
