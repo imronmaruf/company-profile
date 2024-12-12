@@ -17,6 +17,9 @@ return new class extends Migration
             $table->string('logo_path')->nullable();
             $table->text('description')->nullable();
             $table->text('address')->nullable();
+            $table->text('maps')->nullable();
+            $table->text('instagram_link')->nullable();
+            $table->text('whatsapp_link')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('email')->nullable();
             $table->timestamps();

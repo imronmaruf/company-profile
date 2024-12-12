@@ -15,6 +15,9 @@ class Profile extends Model
         'logo_path',
         'description',
         'address',
+        'maps',
+        'instagram_link',
+        'whatsapp_link',
         'phone_number',
         'email'
     ];

@@ -62,7 +62,7 @@
                                     <td>{{ $data->email }}</td>
                                     <td class="col-action">
                                         <div class="d-flex gap-2">
-                                            <form action="{{ route('data-user.destroy', $data->id) }}" method="POST"
+                                            <form action="{{ route('be/user.destroy', $data->id) }}" method="POST"
                                                 id="deleteForm{{ $data->id }}">
                                                 @csrf
                                                 @method('DELETE')

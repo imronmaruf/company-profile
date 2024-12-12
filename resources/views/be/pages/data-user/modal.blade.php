@@ -7,7 +7,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <form action="{{ route('data-user.store') }}" method="POST">
+            <form action="{{ route('be/user.store') }}" method="POST">
                 <div class="modal-body">
                     @csrf
                     <div class="row">
@@ -60,7 +60,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <form action="{{ route('data-user.update', $data->id) }}" method="POST">
+                <form action="{{ route('be/user.update', $data->id) }}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="modal-body">

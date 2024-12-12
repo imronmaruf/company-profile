@@ -14,8 +14,8 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        $dataProfile = Profile::first(); // Ambil satu data saja
-        return view('be.pages.profile.index', compact('dataProfile'));
+        $profile = Profile::first(); // Ambil satu data saja
+        return view('be.pages.profile.index', compact('profile'));
     }
 
     public function edit()
@@ -30,6 +30,9 @@ class ProfileController extends Controller
         $request->validate([
             'company_name' => 'required|string|max:255',
             'address' => 'nullable|string|max:255',
+            'maps' => 'nullable|string',
+            'instagram_link' => 'nullable|string',
+            'whatsapp_link' => 'nullable|string',
             'phone_number' => 'nullable|string|max:20',
             'email' => 'nullable|email|max:255',
             'description' => 'nullable|string',
@@ -40,7 +43,7 @@ class ProfileController extends Controller
         DB::beginTransaction();
         try {
             // Persiapan data untuk disimpan
-            $data = $request->only(['company_name', 'address', 'phone_number', 'email', 'description']);
+            $data = $request->only(['company_name', 'address', 'maps', 'instagram_link', 'whatsapp_link', 'phone_number', 'email', 'description']);
 
             // Cek apakah ada file logo yang diunggah
             if ($request->hasFile('logo_path')) {
@@ -70,6 +73,9 @@ class ProfileController extends Controller
             $request->validate([
                 'company_name' => 'required|string|max:255',
                 'address' => 'nullable|string|max:255',
+                'maps' => 'nullable|string',
+                'instagram_link' => 'nullable|string',
+                'whatsapp_link' => 'nullable|string',
                 'phone_number' => 'nullable|string|max:20',
                 'email' => 'nullable|email|max:255',
                 'description' => 'nullable|string',
@@ -83,6 +89,9 @@ class ProfileController extends Controller
             $data = $request->only([
                 'company_name',
                 'address',
+                'maps',
+                'instagram_link',
+                'whatsapp_link',
                 'phone_number',
                 'email',
                 'description'

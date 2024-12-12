@@ -5,6 +5,13 @@
 @endpush
 
 @push('css')
+    <style>
+        iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+        }
+    </style>
 @endpush
 
 @push('pageHeader')
@@ -22,7 +29,7 @@
 @endpush
 @section('content')
     <div class="container-xl mt-3">
-        @if (!empty($dataProfile))
+        @if (!empty($profile))
             <!-- Jika ada data -->
             <div class="card">
                 <!-- Card Status Top -->
@@ -43,11 +50,11 @@
                 </div>
 
                 <!-- Konten Card -->
-                <div class="row g-3 p-2 d-flex align-items-center justify-content-center">
+                <div class="row g-3 p-2 d-flex justify-content-center">
                     <!-- Gambar Profil -->
                     <div class="col-4 col-md-2">
                         <div class="card rounded-3 h-100 p-0">
-                            <img src="{{ asset('storage/' . $dataProfile->logo_path) }}" alt="Profile"
+                            <img src="{{ asset('storage/' . $profile->logo_path) }}" alt="Profile"
                                 class="card-img rounded-3 object-fit-cover w-100 h-100">
 
                         </div>
@@ -58,25 +65,48 @@
                         <div class="card h-100">
                             <div class="card-body">
                                 <div class="card-title mb-3">
-                                    <h1 class="mb-0">{{ $dataProfile->company_name }}</h1>
+                                    <h1 class="mb-0">{{ $profile->company_name }}</h1>
                                 </div>
-                                <div class="d-flex flex-column gap-2">
-                                    <div>
-                                        <i class="ti ti-map-pin icon me-2 text-secondary"></i>
-                                        Alamat: <strong>{{ $dataProfile->address }}</strong>
+                                <div class="d-flex flex-row gap-4">
+                                    <!-- Kolom Kiri -->
+                                    <div class="d-flex flex-column gap-2 me-5">
+                                        <div>
+                                            <i class="ti ti-map-pin icon me-2 text-secondary"></i>
+                                            Alamat: <strong>{{ $profile->address }}</strong>
+                                        </div>
+                                        <div>
+                                            <i class="ti ti-phone icon me-2 text-secondary"></i>
+                                            No. Telepon: <strong>{{ $profile->phone_number }}</strong>
+                                        </div>
+                                        <div>
+                                            <i class="ti ti-mail icon me-2 text-secondary"></i>
+                                            Email: <strong>{{ $profile->email }}</strong>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <i class="ti ti-calendar icon me-2 text-secondary"></i>
-                                        No. Telepon: <strong>{{ $dataProfile->phone_number }}</strong>
-                                    </div>
-                                    <div>
-                                        <i class="ti ti-mail icon me-2 text-secondary"></i>
-                                        Email: <strong>{{ $dataProfile->email }}</strong>
+
+                                    <!-- Kolom Kanan -->
+                                    <div class="d-flex flex-column gap-2">
+                                        <div>
+                                            <i class="ti ti-brand-instagram icon me-2 text-secondary"></i>
+                                            Instagram:
+                                            <a href="https://www.instagram.com/{{ $profile->instagram_link }}/"
+                                                target="_blank"><strong> {{ $profile->instagram_link }}</strong></a>
+                                        </div>
+                                        <div>
+                                            <i class="ti ti-brand-whatsapp icon me-2 text-secondary"></i>
+                                            WhatsApp:
+                                            <a href="https://wa.me/{{ $profile->whatsapp_link }}" target="_blank">
+                                                <strong>{{ $profile->whatsapp_link }}</strong>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
+
+
                 </div>
 
                 <!-- Deskripsi Profil -->
@@ -84,14 +114,28 @@
                     <div class="col">
                         <h3 class="fw-bold">Deskripsi</h3>
                         <div class="my-2">
-                            {{ $dataProfile->description }}
+                            {{ $profile->description }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-3 p-2 d-flex justify-content-center">
+                    <div class="col-12 col-md-12">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h3 class="fw-bold">Maps {{ $profile->company_name }}</h3>
+                                <div class="d-flex flex-column gap-2">
+                                    <div>
+                                        {!! $profile->maps !!}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         @else
             <!-- Jika tidak ada data -->
-            <div class="card">
+            <div class="card ">
                 <div class="card-status-top bg-danger"></div>
                 <div class="container-xl d-flex flex-column justify-content-center">
                     <div class="empty">

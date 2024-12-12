@@ -28,7 +28,7 @@
                     <div class="row">
                         <!-- Company Name -->
                         <div class="col-md-6">
-                            <div class="mb-2">
+                            <div class="mb-3">
                                 <label class="form-label">Nama Perusahaan/Brand</label>
                                 <input type="text" name="company_name"
                                     class="form-control @error('company_name') is-invalid @enderror"
@@ -40,9 +40,21 @@
                             </div>
                         </div>
 
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Maps</label>
+                                <input type="text" name="maps"
+                                    class="form-control @error('maps') is-invalid @enderror"
+                                    value="{{ old('maps', $profile->maps) }}" placeholder="Masukkan Link GMaps">
+                                @error('maps')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+
                         <!-- Address -->
                         <div class="col-md-6">
-                            <div class="mb-2">
+                            <div class="mb-3">
                                 <label class="form-label">Alamat</label>
                                 <input type="text" name="address"
                                     class="form-control @error('address') is-invalid @enderror"
@@ -55,9 +67,9 @@
 
                         <!-- Phone Number -->
                         <div class="col-md-6">
-                            <div class="mb-2">
+                            <div class="mb-3">
                                 <label class="form-label">Nomor Telephone</label>
-                                <input type="text" name="phone_number"
+                                <input type="number" name="phone_number"
                                     class="form-control @error('phone_number') is-invalid @enderror"
                                     value="{{ old('phone_number', $profile->phone_number) }}"
                                     placeholder="Enter Phone Number">
@@ -68,8 +80,8 @@
                         </div>
 
                         <!-- Email -->
-                        <div class="col-md-6">
-                            <div class="mb-2">
+                        <div class="col-md-4">
+                            <div class="mb-3">
                                 <label class="form-label">Email</label>
                                 <input type="text" name="email"
                                     class="form-control @error('email') is-invalid @enderror"
@@ -79,6 +91,36 @@
                                 @enderror
                             </div>
                         </div>
+
+
+                        <!-- Instagram -->
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label class="form-label">Username Instagram</label>
+                                <input type="text" name="instagram_link"
+                                    class="form-control @error('instagram_link') is-invalid @enderror"
+                                    value="{{ old('instagram_link', $profile->instagram_link) }}"
+                                    placeholder="Masukkan username Instagram">
+                                @error('instagram_link')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- WhatsApp -->
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label class="form-label">WhatsApp</label>
+                                <input type="number" name="whatsapp_link"
+                                    class="form-control @error('whatsapp_link') is-invalid @enderror"
+                                    value="{{ old('whatsapp_link', $profile->whatsapp_link) }}"
+                                    placeholder="Masukkan No whatsapp ex.62821">
+                                @error('whatsapp_link')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+
 
                         <!-- Description -->
                         <div class="col-md-8">

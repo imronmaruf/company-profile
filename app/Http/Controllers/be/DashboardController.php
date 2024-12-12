@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\be;
 
-use App\Http\Controllers\Controller;
+use App\Models\Profile;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
@@ -24,6 +25,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('be.index');
+        $dataProfile = Profile::first();
+        return view('be.index', compact('dataProfile'));
     }
 }
