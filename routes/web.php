@@ -46,7 +46,11 @@ Route::group(['middleware' => ['auth']], function () {
     // Profile
     Route::group(['prefix' => 'be/profile'], function () {
         Route::get('/', [ProfileController::class, 'index'])->name('be/profile.index');
+        Route::get('/edit', [ProfileController::class, 'edit'])->name('be/profile.edit');
+        Route::post('/store', [ProfileController::class, 'store'])->name('be/profile.store');
+        Route::put('/update', [ProfileController::class, 'update'])->name('be/profile.update');
     });
+
 
     // Route::prefix('data-user')->middleware('can:admin-only')->group(function () {
     //     Route::get('/', [UserController::class, 'index'])->name('data-user.index');

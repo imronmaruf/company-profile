@@ -38,7 +38,7 @@ class UserController extends Controller
             $newUser->save();
 
             DB::commit();;
-            return redirect()->route('data-user.index')->with('success', 'Data berhasil diperbarui.');
+            return redirect()->route('be/user.index')->with('success', 'Data berhasil diperbarui.');
         } catch (\Exception $e) {
             DB::rollBack();
             return redirect()->back()->with('error', $e->getMessage())->withInput();
@@ -84,7 +84,7 @@ class UserController extends Controller
 
             DB::commit();
             Session::flash('success', 'Berhasil update data');
-            return redirect()->route('data-user.index');
+            return redirect()->route('be/user.index');
         } catch (\Exception $e) {
             DB::rollBack();
             return redirect()->back()->with('error', $e->getMessage())->withInput();
@@ -99,7 +99,7 @@ class UserController extends Controller
             $user->delete();
             DB::commit();
             Session()->flash('success', 'User  Berhasil Dihapus');
-            return redirect()->route('data-user.index');
+            return redirect()->route('be/user.index');
         } catch (\Exception $e) {
             DB::rollBack();
             return redirect()->back()->with('error', $e->getMessage());

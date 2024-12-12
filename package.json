@@ -14,6 +14,7 @@
         "vite": "^5.0.0"
     },
     "dependencies": {
+        "@sweetalert2/theme-dark": "^5.0.18",
         "@tabler/icons-webfont": "^3.24.0",
         "datatables.net": "^2.1.8",
         "datatables.net-bs5": "^2.1.8",

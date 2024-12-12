@@ -231,7 +231,7 @@
 
 
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{ route('data-user.index') }}">
+                    <a class="nav-link active" href="{{ route('be/profile.index') }}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <i class="ti ti-buildings"></i>
                         </span>
@@ -242,7 +242,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{ route('data-user.index') }}">
+                    <a class="nav-link active" href="#">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <i class="ti ti-news"></i>
                         </span>
@@ -254,7 +254,7 @@
 
 
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{ route('data-user.index') }}">
+                    <a class="nav-link active" href="#">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <i class="ti ti-shopping-cart"></i>
                         </span>
