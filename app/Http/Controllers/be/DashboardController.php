@@ -25,7 +25,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $dataProfile = Profile::first();
-        return view('be.index', compact('dataProfile'));
+        // $profile = Profile::first();
+        return view('be.index');
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\be\UserController;
 use App\Http\Controllers\fe\LandingController;
 use App\Http\Controllers\be\DashboardController;
 use App\Http\Controllers\be\ProfileController;
+use App\Http\Controllers\be\UserSettingAccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +52,11 @@ Route::group(['middleware' => ['auth']], function () {
         Route::put('/update', [ProfileController::class, 'update'])->name('be/profile.update');
     });
 
+    Route::group(['prefix' => 'be/account/setting'], function () {
+        Route::get('/', [UserSettingAccountController::class, 'index'])->name('be/account/setting.index');
+        Route::get('/edit', [UserSettingAccountController::class, 'edit'])->name('be/account/setting.edit');
+        Route::put('/update', [UserSettingAccountController::class, 'update'])->name('be/account/setting.update');
+    });
 
     // Route::prefix('data-user')->middleware('can:admin-only')->group(function () {
     //     Route::get('/', [UserController::class, 'index'])->name('data-user.index');
