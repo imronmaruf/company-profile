@@ -14,7 +14,11 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        $profile = Profile::first(); // Ambil satu data saja
+        $profile = Profile::first(); // Pastikan ini benar-benar mengembalikan null
+
+        // Tambahkan debugging
+        Log::info('Profile in controller:', ['profile' => $profile]);
+        // $profile = Profile::first(); // Ambil satu data saja
         return view('be.pages.profile.index', compact('profile'));
     }
 

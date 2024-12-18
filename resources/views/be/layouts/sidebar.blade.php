@@ -123,7 +123,8 @@
         <div class="collapse navbar-collapse" id="sidebar-menu">
             <ul class="navbar-nav pt-lg-3">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('dashboard.index') }}">
+                    <a class="nav-link {{ Route::is('dashboard.index') ? 'active' : '' }}"
+                        href="{{ route('dashboard.index') }}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <i class="ti ti-home icon"></i>
                         </span>
@@ -140,20 +141,27 @@
                     </div>
                 </li>
 
-
-                <li class="nav-item">
-                    <a class="nav-link active" href="{{ route('be/profile.index') }}">
+                <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" href="#navbar-help" data-bs-toggle="dropdown"
+                        data-bs-auto-close="false" role="button" aria-expanded="false">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
-                            <i class="ti ti-buildings icon"></i>
+                            <i class="ti ti-device-desktop-analytics icon"></i>
                         </span>
                         <span class="nav-link-title">
-                            Profile
+                            Konten
                         </span>
                     </a>
+
+                    <div class="dropdown-menu active">
+                        <a class="dropdown-item text-white active" href="{{ route('be/hero.index') }}">
+                            {{-- <ti class="ti ti-heart icon icon-inline me-1"></ti> --}}
+                            Hero
+                        </a>
+                    </div>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">
+                    <a class="nav-link" href="#">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <i class="ti ti-news icon"></i>
                         </span>
@@ -165,7 +173,7 @@
 
 
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">
+                    <a class="nav-link" href="#">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <i class="ti ti-shopping-cart icon"></i>
                         </span>
@@ -175,16 +183,43 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <div class="nav-link">
-                        <span class="nav-link-title">
-                            Manajemen Pengguna
+                <div
+                    class="nav-link {{ Route::is('be/profile.index', 'be/profile.edit', 'be/account/setting.index', 'be/account/setting.edit', 'be/user.index') ? 'active' : '' }}">
+                    <span class="nav-link-title">
+                        Master Menu
+                    </span>
+                </div>
+
+
+                <li
+                    class="nav-item {{ Route::is('be/profile.index') || Route::is('be/profile.edit') ? 'active' : '' }}">
+                    <a class="nav-link {{ Route::is('be/profile.index') || Route::is('be/profile.edit') ? 'active' : '' }}"
+                        href="{{ route('be/profile.index') }}">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <i class="ti ti-buildings icon"></i>
                         </span>
-                    </div>
+                        <span class="nav-link-title">
+                            Profil Perusahaan
+                        </span>
+                    </a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link active" href="{{ route('be/user.index') }}">
+                <li
+                    class="nav-item {{ Route::is('be/account/setting.index') || Route::is('be/account/setting.edit') ? 'active' : '' }}">
+                    <a class="nav-link {{ Route::is('be/account/setting.index') || Route::is('be/account/setting.edit') ? 'active' : '' }}"
+                        href="{{ route('be/account/setting.index') }}">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <i class="ti ti-lock-cog icon"></i>
+                        </span>
+                        <span class="nav-link-title">
+                            Pengaturan Akun
+                        </span>
+                    </a>
+                </li>
+
+                <li class="nav-item {{ Route::is('be/user.index') ? 'active' : '' }}">
+                    <a class="nav-link {{ Route::is('be/user.index') ? 'active' : '' }}"
+                        href="{{ route('be/user.index') }}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <i class="ti ti-users icon"></i>
                         </span>
@@ -192,53 +227,6 @@
                             Data Users
                         </span>
                     </a>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#navbar-help" data-bs-toggle="dropdown"
-                        data-bs-auto-close="false" role="button" aria-expanded="false">
-                        <span
-                            class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/lifebuoy -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
-                                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-                                <path d="M15 15l3.35 3.35" />
-                                <path d="M9 15l-3.35 3.35" />
-                                <path d="M5.65 5.65l3.35 3.35" />
-                                <path d="M18.35 5.65l-3.35 3.35" />
-                            </svg>
-                        </span>
-                        <span class="nav-link-title">
-                            Help
-                        </span>
-                    </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="https://tabler.io/docs" target="_blank" rel="noopener">
-                            Documentation
-                        </a>
-                        <a class="dropdown-item" href="./changelog.html">
-                            Changelog
-                        </a>
-                        <a class="dropdown-item" href="https://github.com/tabler/tabler" target="_blank"
-                            rel="noopener">
-                            Source code
-                        </a>
-                        <a class="dropdown-item text-pink" href="https://github.com/sponsors/codecalm"
-                            target="_blank" rel="noopener">
-                            <!-- Download SVG icon from http://tabler-icons.io/i/heart -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-inline me-1" width="24"
-                                height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path
-                                    d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
-                            </svg>
-                            Sponsor project!
-                        </a>
-                    </div>
                 </li>
             </ul>
         </div>

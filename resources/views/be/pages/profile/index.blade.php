@@ -29,7 +29,7 @@
 @endpush
 @section('content')
     <div class="container-xl mt-3">
-        @if (!empty($profile))
+        @if (optional($profile)->exists)
             <!-- Jika ada data -->
             <div class="card">
                 <!-- Card Status Top -->

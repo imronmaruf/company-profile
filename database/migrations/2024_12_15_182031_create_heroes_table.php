@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('landing_pages', function (Blueprint $table) {
+        Schema::create('heroes', function (Blueprint $table) {
             $table->id();
             $table->string('hero_image')->nullable();
             $table->string('title_hero')->nullable();
-            $table->string('image_path')->nullable();
-            $table->string('video_url')->nullable();
+            $table->text('description')->nullable();
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('landing_pages');
+        Schema::dropIfExists('heroes');
     }
 };

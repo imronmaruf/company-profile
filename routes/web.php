@@ -2,10 +2,11 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\be\HeroController;
 use App\Http\Controllers\be\UserController;
+use App\Http\Controllers\be\ProfileController;
 use App\Http\Controllers\fe\LandingController;
 use App\Http\Controllers\be\DashboardController;
-use App\Http\Controllers\be\ProfileController;
 use App\Http\Controllers\be\UserSettingAccountController;
 
 /*
@@ -52,10 +53,22 @@ Route::group(['middleware' => ['auth']], function () {
         Route::put('/update', [ProfileController::class, 'update'])->name('be/profile.update');
     });
 
+    // Account Setting
     Route::group(['prefix' => 'be/account/setting'], function () {
         Route::get('/', [UserSettingAccountController::class, 'index'])->name('be/account/setting.index');
         Route::get('/edit', [UserSettingAccountController::class, 'edit'])->name('be/account/setting.edit');
         Route::put('/update', [UserSettingAccountController::class, 'update'])->name('be/account/setting.update');
+    });
+
+    Route::group(['prefix' => 'be/hero'], function () {
+        Route::get('/', [HeroController::class, 'index'])->name('be/hero.index');
+        Route::get('/preview', [HeroController::class, 'preview'])->name('be/hero.preview');
+        Route::get('/create', [HeroController::class, 'create'])->name('be/hero.create');
+        Route::post('/store', [HeroController::class, 'store'])->name('be/hero.store');
+        Route::get('/edit/{id}', [HeroController::class, 'edit'])->name('be/hero.edit');
+        Route::put('/update/{id}', [HeroController::class, 'update'])->name('be/hero.update');
+        Route::delete('/destroy/{id}', [HeroController::class, 'destroy'])->name('be/hero.destroy');
+        Route::post('toggle-status/{id}', [HeroController::class, 'toggleStatus'])->name('be/hero.toggle-status');
     });
 
     // Route::prefix('data-user')->middleware('can:admin-only')->group(function () {
