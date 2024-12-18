@@ -1,7 +1,7 @@
 @extends('be.layouts.main')
 
 @push('title')
-    Tim
+    Testimonials
 @endpush
 
 @push('css')
@@ -24,24 +24,18 @@
             <div class="row g-2 align-items-center">
                 <div class="col">
                     <h2 class="page-title">
-                        Data Tim
+                        Data Testimoni
                     </h2>
                 </div>
                 <div class="col-auto ms-auto d-print-none">
                     <div class="btn-list">
                         <button class="btn btn-primary d-none d-sm-inline-block" data-bs-toggle="modal"
                             data-bs-target="#modalAdd">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M12 5l0 14" />
-                                <path d="M5 12l14 0" />
-                            </svg>
-                            Tambah Tim
+                            <i class="ti ti-plus icon"></i>
+                            Tambah Testimoni
                         </button>
                         <button class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal" data-bs-target="#modalAdd"
-                            aria-label="Create new user">
+                            aria-label="Create new testimonial">
                             <i class="ti ti-plus"></i>
                         </button>
                     </div>
@@ -61,21 +55,24 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama</th>
-                                <th>Posisi/Jabatan</th>
+                                <th>Asal Instansi/Posisi</th>
+                                <th>Testimoni</th>
                                 <th>Foto</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($dataTeams as $data)
+                            @foreach ($dataTestimonials as $data)
                                 <tr>
                                     <td class="col-no">{{ $loop->iteration }}</td>
                                     <td>{{ $data->name }}</td>
-                                    <td>{{ $data->position }}</td>
+                                    <td>{{ $data->position ?: '-' }}</td>
+                                    <td class="text-wrap">{{ $data->testimonial }}</td>
                                     <td class="text-center">
                                         @if ($data->photo_path)
                                             <div style="border: 1px solid #9e9e9e; display: inline-block;" class="rounded">
-                                                <img src="{{ asset('storage/' . $data->photo_path) }}" alt="Teams Image"
+                                                <img src="{{ asset('storage/' . $data->photo_path) }}"
+                                                    alt="Testimonial Image"
                                                     style="max-width: 180px; max-height: 120px; object-fit: cover;"
                                                     class="rounded">
                                             </div>
@@ -83,9 +80,10 @@
                                             <span class="text-muted">Tidak ada foto</span>
                                         @endif
                                     </td>
+
                                     <td class="col-action">
                                         <div class="d-flex gap-2">
-                                            <form action="{{ route('be/teams.destroy', $data->id) }}" method="POST"
+                                            <form action="{{ route('be/testimonials.destroy', $data->id) }}" method="POST"
                                                 id="deleteForm{{ $data->id }}">
                                                 @csrf
                                                 @method('DELETE')
@@ -94,7 +92,6 @@
                                                     title="Hapus Data">
                                                     <i class="ti ti-trash"></i>
                                                 </button>
-
                                             </form>
 
                                             <button type="button" class="btn btn-warning" data-bs-toggle="modal"
@@ -111,7 +108,7 @@
             </div>
         </div>
     </div>
-    @include('be.pages.teams.modal')
+    @include('be.pages.testimonials.modal')
 @endsection
 
 @push('js')
@@ -146,7 +143,6 @@
                     timer: 1500
                 });
             }
-
 
             @if ($errors->any())
                 Swal2.fire({

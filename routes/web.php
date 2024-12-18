@@ -8,6 +8,7 @@ use App\Http\Controllers\be\UserController;
 use App\Http\Controllers\be\ProfileController;
 use App\Http\Controllers\fe\LandingController;
 use App\Http\Controllers\be\DashboardController;
+use App\Http\Controllers\be\TestimonialsController;
 use App\Http\Controllers\be\UserSettingAccountController;
 
 /*
@@ -81,6 +82,16 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/edit/{id}', [TeamController::class, 'edit'])->name('be/teams.edit');
         Route::put('/update/{id}', [TeamController::class, 'update'])->name('be/teams.update');
         Route::delete('/destroy/{id}', [TeamController::class, 'destroy'])->name('be/teams.destroy');
+    });
+
+    // Testimonial
+    Route::group(['prefix' => 'be/testimonials'], function () {
+        Route::get('/', [TestimonialsController::class, 'index'])->name('be/testimonials.index');
+        Route::get('/create', [TestimonialsController::class, 'create'])->name('be/testimonials.create');
+        Route::post('/store', [TestimonialsController::class, 'store'])->name('be/testimonials.store');
+        Route::get('/edit/{id}', [TestimonialsController::class, 'edit'])->name('be/testimonials.edit');
+        Route::put('/update/{id}', [TestimonialsController::class, 'update'])->name('be/testimonials.update');
+        Route::delete('/destroy/{id}', [TestimonialsController::class, 'destroy'])->name('be/testimonials.destroy');
     });
 
     // Route::prefix('data-user')->middleware('can:admin-only')->group(function () {

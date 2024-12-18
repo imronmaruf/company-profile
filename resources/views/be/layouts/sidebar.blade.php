@@ -160,6 +160,9 @@
                         <a class="dropdown-item text-white active" href="{{ route('be/teams.index') }}">
                             Teams
                         </a>
+                        <a class="dropdown-item text-white active" href="{{ route('be/testimonials.index') }}">
+                            Testimonials
+                        </a>
                     </div>
 
 
