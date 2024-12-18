@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\be\HeroController;
+use App\Http\Controllers\be\TeamController;
 use App\Http\Controllers\be\UserController;
 use App\Http\Controllers\be\ProfileController;
 use App\Http\Controllers\fe\LandingController;
@@ -60,6 +61,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::put('/update', [UserSettingAccountController::class, 'update'])->name('be/account/setting.update');
     });
 
+    // Hero
     Route::group(['prefix' => 'be/hero'], function () {
         Route::get('/', [HeroController::class, 'index'])->name('be/hero.index');
         Route::get('/preview', [HeroController::class, 'preview'])->name('be/hero.preview');
@@ -69,6 +71,16 @@ Route::group(['middleware' => ['auth']], function () {
         Route::put('/update/{id}', [HeroController::class, 'update'])->name('be/hero.update');
         Route::delete('/destroy/{id}', [HeroController::class, 'destroy'])->name('be/hero.destroy');
         Route::post('toggle-status/{id}', [HeroController::class, 'toggleStatus'])->name('be/hero.toggle-status');
+    });
+
+    // Teams
+    Route::group(['prefix' => 'be/teams'], function () {
+        Route::get('/', [TeamController::class, 'index'])->name('be/teams.index');
+        Route::get('/create', [TeamController::class, 'create'])->name('be/teams.create');
+        Route::post('/store', [TeamController::class, 'store'])->name('be/teams.store');
+        Route::get('/edit/{id}', [TeamController::class, 'edit'])->name('be/teams.edit');
+        Route::put('/update/{id}', [TeamController::class, 'update'])->name('be/teams.update');
+        Route::delete('/destroy/{id}', [TeamController::class, 'destroy'])->name('be/teams.destroy');
     });
 
     // Route::prefix('data-user')->middleware('can:admin-only')->group(function () {

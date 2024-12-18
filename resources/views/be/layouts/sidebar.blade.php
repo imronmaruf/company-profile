@@ -152,12 +152,17 @@
                         </span>
                     </a>
 
-                    <div class="dropdown-menu active">
+                    <div class="dropdown-menu">
                         <a class="dropdown-item text-white active" href="{{ route('be/hero.index') }}">
                             {{-- <ti class="ti ti-heart icon icon-inline me-1"></ti> --}}
                             Hero
                         </a>
+                        <a class="dropdown-item text-white active" href="{{ route('be/teams.index') }}">
+                            Teams
+                        </a>
                     </div>
+
+
                 </li>
 
                 <li class="nav-item">

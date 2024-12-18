@@ -18,7 +18,7 @@
                 </div>
                 <div class="col-auto ms-auto d-print-none">
                     <div class="btn-list">
-                        @if (!$dataHero->isEmpty())
+                        @if ($dataHero->where('status', 1)->isNotEmpty())
                             <a href="{{ route('be/hero.preview') }}" class="btn btn-teal d-none d-sm-inline-block">
                                 <i class="ti ti-eye icon"></i>
                                 Preview
@@ -144,9 +144,9 @@
                         Swal2.fire({
                             title: 'Nonaktifkan Hero?',
                             html: `
-                        <p>Apakah Anda yakin ingin menonaktifkan hero ini?</p>
-                        <small class="text-danger">Hero yang dinonaktifkan tidak akan ditampilkan di landing page.</small>
-                    `,
+                            <p>Apakah Anda yakin ingin menonaktifkan hero ini?</p>
+                            <small class="text-danger">Hero yang dinonaktifkan tidak akan ditampilkan di landing page.</small>
+                        `,
                             icon: 'warning',
                             showCancelButton: true,
                             confirmButtonColor: '#3085d6',
@@ -179,6 +179,9 @@
                                                 text: data.message,
                                                 timer: 1500,
                                                 showConfirmButton: false
+                                            }).then(() => {
+                                                // Reload page after success
+                                                location.reload();
                                             });
                                         } else {
                                             // Revert checkbox if failed
@@ -234,6 +237,9 @@
                                         text: data.message,
                                         timer: 1500,
                                         showConfirmButton: false
+                                    }).then(() => {
+                                        // Reload page after success
+                                        location.reload();
                                     });
                                 } else {
                                     // Revert checkbox if failed
@@ -275,6 +281,8 @@
                     text: successMessage,
                     timer: 1500,
                     showConfirmButton: false
+                }).then(() => {
+                    location.reload(); // Reload page after success message
                 });
             }
 
